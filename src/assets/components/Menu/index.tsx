@@ -8,8 +8,9 @@ export function Menu() {
     return (
         <>
             <div className="menu-container">
-                <Link to={'/'}>Слайдер</Link>
+                <Link to={'/'} >Слайдер</Link>
                 <Link to={'/audio'}>Аудио плеер</Link>
+                <Link to={'/camera'}>Камера</Link>
             </div>
         </>
     )

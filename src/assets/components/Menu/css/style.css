@@ -1,0 +1,28 @@
+/* Стили меню */
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    background: #999;
+}
+
+.menu-container a{
+    display: block;
+    padding: 5px;
+    color: #fff;
+    transition: .5s all;
+}
+
+.menu-container a:visited{
+    color: #fff;
+}
+
+.menu-container a:hover{
+    color: #ccc;
+}
+
+.menu-container a:active{
+    transform: scale(1.1);
+}

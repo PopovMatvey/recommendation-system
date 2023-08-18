@@ -8,7 +8,7 @@ export function Header(){
     return(
         <header>
             <HeaderInformation/>
-            {/* <Menu/> */}
+            <Menu/>
         </header>
     );
 }

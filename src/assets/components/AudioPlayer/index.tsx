@@ -4,7 +4,7 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill,
 import { songsData } from './data/arrayAudio';
 
 //Музыкальный плеер
-const Player = () => {
+const AudioPlayer = () => {
   const clickRef = useRef(document.createElement("div"));
   const [songs] = useState(songsData);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -84,6 +84,7 @@ const Player = () => {
 
   return (
     <>
+      <h1>Аудио плеер</h1>
       <audio src={currentSong.trackPath} ref={audioElement} onTimeUpdate={onPlaying} />
       <div className='player_container'>
         <div className="title">
@@ -104,4 +105,4 @@ const Player = () => {
   )
 }
 
-export default Player
+export default AudioPlayer
