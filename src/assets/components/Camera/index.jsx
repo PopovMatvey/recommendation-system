@@ -1,6 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
 import './css/style.css';
-// import { Camera } from "react-camera-pro/dist/components/Camera/Camera";
 import Webcam from "react-webcam";
 
 // Камера
@@ -8,12 +7,14 @@ export function CameraContainer() {
     const webcamRef = useRef(null);
     const [imgSrc, setImgSrc] = useState(null);
     const [captureFlag, setCaptureFlag] = useState(true);
-    const arrayPhoto = [];
+    const [arrayPhoto] = useState([]);
 
     // Обработчик "Сделать фото"
     const handlerCreateCapture = useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
+        setCaptureFlag(false);
+
         console.log(arrayPhoto);
     }, [webcamRef]);
 
@@ -21,6 +22,7 @@ export function CameraContainer() {
     const handlerSaveCaptuer = () => {
         arrayPhoto.push(imgSrc);
         setImgSrc(null);
+        setCaptureFlag(true);
 
         console.log(arrayPhoto);
     }
@@ -28,6 +30,8 @@ export function CameraContainer() {
     // Обработчик "Удалить фото"
     const handlerDeleteCaptuer = () => {
         setImgSrc(null);
+        setCaptureFlag(true);
+
         console.log(arrayPhoto);
     }
 
@@ -35,22 +39,31 @@ export function CameraContainer() {
         <>
             <h1>Камера</h1>
             <div className="camera-container">
-                <div className="container">
-                    {imgSrc ? (
+                {
+                    imgSrc ? (
                         <img src={imgSrc} alt="webcam" />
                     ) : (
-                        <Webcam height={600} width={600} ref={webcamRef} />
-                    )}
-                    <div className="btn-container">
-                        {/* {!captureFlag ?? <button onClick={handlerCreateCapture}>Сделать фото</button>} 
-                       {captureFlag ??<button onClick={handlerSaveCaptuer}>Сохранить фото</button>} 
-                       {captureFlag ??<button onClick={handlerDeleteCaptuer}>Удалить фото</button>}  */}
-                        <button onClick={handlerCreateCapture}>Сделать фото</button>
-                        <button onClick={handlerSaveCaptuer}>Сохранить фото</button>
-                        <button onClick={handlerDeleteCaptuer}>Удалить фото</button>
-                    </div>
+                        <Webcam ref={webcamRef} />
+                    )
+                }
+                <div className="camera-container_buttons">
+                    {
+                        captureFlag ? (
+                            <>
+                                <div className="camera-container_buttons__create-capture">
+                                    <button onClick={handlerCreateCapture}>Сделать фото</button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="camera-container_buttons__procces-capture">
+                                    <button onClick={handlerSaveCaptuer}>Сохранить фото</button>
+                                    <button onClick={handlerDeleteCaptuer}>Удалить фото</button>
+                                </div>
+                            </>
+                        )
+                    }
                 </div>
-
             </div>
         </>
     )
