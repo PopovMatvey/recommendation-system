@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// Массив треков (CardTrackProps[])
-export function useRequest() {
+// Массив при get запрос
+export function useRequestArray(url: string) {
     const [requestArray, setRequestArray] = useState([]);
 
-    async function featchAudioArray() {
+    async function featchArray() {
         try {
-            const response = await axios.get("url");
+            const response = await axios.get(url);
 
             setRequestArray(response.data);
         } catch (error) {
@@ -16,8 +16,8 @@ export function useRequest() {
     }
 
     useEffect(() => {
-        featchAudioArray();
-    }, [])
+        featchArray();
+    })
 
     return { requestArray };
 }

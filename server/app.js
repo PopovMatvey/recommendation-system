@@ -24,6 +24,7 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 
 // db.run(sql);
 
+// db.run(`CREATE TABLE rules(id INTEGER PRIMARY KEY, first_argument, boolean_simbol, second_argument, result)`)
 //drop table
 // db.run("DROP TABLE users");
 
@@ -37,6 +38,40 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 //     (error) => { if (error) { console.log(error); } }
 // );
 
+sql = `INSERT INTO rules(first_argument, boolean_simbol, second_argument, result) VALUES (?,?,?,?)`;
+
+// db.run(
+//     sql,
+//     ["country = choosen_country", "-", "-", "hotel with choosen_country"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+// db.run(
+//     sql,
+//     ["amount_stars = choosen_amount_stars", "-", "-", "hotel with choosen_amount_stars"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+// db.run(
+//     sql,
+//     ["amount_nights = choosen_amount_nights", "-", "-", "price_for_hotel = price_for_night *  amount_nights"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+// db.run(
+//     sql,
+//     ["amount_adults = choosen_amount_adults", "-", "-", "price for hotel = choosen_amount_adults * price for night "],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+// db.run(
+//     sql,
+//     ["amount_childs = choosen_amount_childs", "-", "-", "price for hotel  childs = (price for night * 0.5) choosen_amount_childs "],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+
+
 //update data
 // sql = `UPDATE users SET first_name = ? WHERE id = ?`;
 // db.run(sql, ["Jake",1], (error)=>{
@@ -44,8 +79,8 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 // });
 
 // delete data
-// sql = `DELETE FROM users WHERE id = ?`;
-// db.run(sql,[3],(error)=>{
+// sql = `DELETE FROM rules WHERE id = ?`;
+// db.run(sql,[1],(error)=>{
 //     if(error) return console.log(error.message);
 // });
 
@@ -61,11 +96,32 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 //     })
 // })
 
+let arrayRules = [];
+
+sql = 'SELECT * FROM rules';
+db.all(sql, [], (error, rows) => {
+    if (error) {
+        return console.log(err.message);
+    }
+
+    arrayRules = rows;
+
+    console.log(arrayRules);
+
+    // rows.forEach((row) => {
+    //     console.log(row);
+    // })
+})
+
 /*Requests*/
 //GET
 app.get(`${urlRequest}`, (request, response) => {
     response.status(200).json({ status: 200 });
 });
+
+app.get(`api/desition-system/rules`,(request,response)=>{
+    response.status(200).json({arrayRules});
+})
 
 //POST
 app.post(`${urlRequest}`, (request, response) => {
