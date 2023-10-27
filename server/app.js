@@ -119,7 +119,7 @@ app.get(`${urlRequest}`, (request, response) => {
     response.status(200).json({ status: 200 });
 });
 
-app.get(`api/desition-system/rules`,(request,response)=>{
+app.get(`/api/desition-system/rules`,(request,response)=>{
     response.status(200).json({arrayRules});
 })
 
