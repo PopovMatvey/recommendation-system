@@ -27,6 +27,9 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 // db.run(`CREATE TABLE rules(id INTEGER PRIMARY KEY, first_argument, boolean_simbol, second_argument, result)`)
 //drop table
 // db.run("DROP TABLE users");
+// db.run("DROP TABLE countries");
+
+// db.run(`CREATE TABLE countries (id INTEGER PRIMARY KEY, name_country)`)
 
 
 //insert data 
@@ -38,7 +41,35 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 //     (error) => { if (error) { console.log(error); } }
 // );
 
-sql = `INSERT INTO rules(first_argument, boolean_simbol, second_argument, result) VALUES (?,?,?,?)`;
+// sql = `INSERT INTO countries(name_country) VALUES (?)`;
+
+// db.run(
+//     sql,
+//     ["Россия"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+// db.run(
+//     sql,
+//     ["Турция"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+// db.run(
+//     sql,
+//     ["Греция"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+// db.run(
+//     sql,
+//     ["Египет"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+// db.run(
+//     sql,
+//     ["Тайланд"],
+//     (error) => { if (error) { console.log(error); } }
+// );
+
+// sql = `INSERT INTO rules(first_argument, boolean_simbol, second_argument, result) VALUES (?,?,?,?)`;
 
 // db.run(
 //     sql,
@@ -80,9 +111,39 @@ sql = `INSERT INTO rules(first_argument, boolean_simbol, second_argument, result
 
 // delete data
 // sql = `DELETE FROM rules WHERE id = ?`;
+// sql = `DELETE FROM countries WHERE id = ?`;
+// db.run(sql,[7],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// sql = `DELETE FROM rules WHERE id = ?`;
 // db.run(sql,[1],(error)=>{
 //     if(error) return console.log(error.message);
 // });
+// db.run(sql,[2],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[3],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[4],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[5],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[6],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[7],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[8],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+// db.run(sql,[9],(error)=>{
+//     if(error) return console.log(error.message);
+// });
+
 
 //query the data
 // sql = 'SELECT * FROM users';
@@ -113,6 +174,23 @@ db.all(sql, [], (error, rows) => {
     // })
 })
 
+let arrayCountries = [];
+
+sql = 'SELECT * FROM countries';
+db.all(sql, [], (error, rows) => {
+    if (error) {
+        return console.log(err.message);
+    }
+
+    arrayCountries = rows;
+
+    console.log(arrayCountries);
+
+    // rows.forEach((row) => {
+    //     console.log(row);
+    // })
+})
+
 /*Requests*/
 //GET
 app.get(`${urlRequest}`, (request, response) => {
@@ -121,7 +199,11 @@ app.get(`${urlRequest}`, (request, response) => {
 
 app.get(`/api/desition-system/rules`,(request,response)=>{
     response.status(200).json({arrayRules});
-})
+});
+
+app.get(`/api/desition-system/countries`,(request,response)=>{
+    response.status(200).json({arrayCountries});
+});
 
 //POST
 app.post(`${urlRequest}`, (request, response) => {

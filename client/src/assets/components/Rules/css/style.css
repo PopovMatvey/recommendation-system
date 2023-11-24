@@ -1,0 +1,33 @@
+/* Стили правил */
+.rules-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rules-container h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.rules-container input{
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.button{
+    background: none;
+    transition: 1s all;
+}
+
+.button:hover{
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+}
