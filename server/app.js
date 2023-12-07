@@ -19,20 +19,20 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
     if (err) return console.log(err);
 });
 
-//create table
+// // create table
 // sql = `CREATE TABLE users(id INTEGER PRIMARY KEY, first_name, last_name,username,password,email)`;
 
 // db.run(sql);
 
 // db.run(`CREATE TABLE rules(id INTEGER PRIMARY KEY, first_argument, boolean_simbol, second_argument, result)`)
-//drop table
+// // drop table
 // db.run("DROP TABLE users");
 // db.run("DROP TABLE countries");
 
 // db.run(`CREATE TABLE countries (id INTEGER PRIMARY KEY, name_country)`)
 
 
-//insert data 
+// // insert data 
 // sql = `INSERT INTO users(first_name, last_name,username,password,email) VALUES (?,?,?,?,?)`;
 
 // db.run(
@@ -103,7 +103,7 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 
 
 
-//update data
+// // update data
 // sql = `UPDATE users SET first_name = ? WHERE id = ?`;
 // db.run(sql, ["Jake",1], (error)=>{
 //     if(error) return console.log(error.message);
@@ -145,17 +145,17 @@ const db = new sqlite3.Database('./DataBase.db', sqlite3.OPEN_READWRITE, (err) =
 // });
 
 
-//query the data
-// sql = 'SELECT * FROM users';
-// db.all(sql, [], (error, rows) => {
-//     if (error) {
-//         return console.log(err.message);
-//     }
+// query the data
+sql = 'SELECT * FROM users';
+db.all(sql, [], (error, rows) => {
+    if (error) {
+        return console.log(err.message);
+    }
 
-//     rows.forEach((row) => {
-//         console.log(row);
-//     })
-// })
+    rows.forEach((row) => {
+        console.log(row);
+    })
+})
 
 let arrayRules = [];
 
