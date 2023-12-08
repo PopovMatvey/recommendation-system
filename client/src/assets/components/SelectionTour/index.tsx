@@ -4,14 +4,10 @@ import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 
 /**
- * 
- * @returns 
+ * Компонент "Выбор тура"
+ * @returns Выбор тура
  */
 export function SelectionTour() {
-    // const [beachRelax, setBeachRelax] = useState(false);
-    // const [mountRelax, setmountRelax] = useState(false);
-    // const [excursionsRelax, setExcursionsRelax] = useState(false);
-
     const [priceFrom, setPriceFrom] = useState(1000);
     const [priceTo, setPriceTo] = useState(1000000);
     const [amoutStars, setAmountStars] = useState(5);
@@ -154,43 +150,43 @@ export function SelectionTour() {
         return returnedArray;
     }
 
-    const findDetermExcursions = (parArray: any, parHaveExcursions: any) => {
-        let returnedArray: any = [];
+    // const findDetermExcursions = (parArray: any, parHaveExcursions: any) => {
+    //     let returnedArray: any = [];
 
-        for (let i = 0; i < parArray.length; i++) {
-            if (parArray[i].haveExcurtions === parHaveExcursions) {
-                returnedArray.push(parArray[i]);
-            }
-        }
+    //     for (let i = 0; i < parArray.length; i++) {
+    //         if (parArray[i].haveExcurtions === parHaveExcursions) {
+    //             returnedArray.push(parArray[i]);
+    //         }
+    //     }
 
-        return returnedArray;
-    }
-
-
-    const findDetermBeach = (parArray: any, parHaveBeach: any) => {
-        let returnedArray: any = [];
-
-        for (let i = 0; i < parArray.length; i++) {
-            if (parArray[i].haveBeach === parHaveBeach) {
-                returnedArray.push(parArray[i]);
-            }
-        }
-
-        return returnedArray;
-    }
+    //     return returnedArray;
+    // }
 
 
-    const findDetermMountRelax = (parArray: any, parHaveMountRelax: any) => {
-        let returnedArray: any = [];
+    // const findDetermBeach = (parArray: any, parHaveBeach: any) => {
+    //     let returnedArray: any = [];
 
-        for (let i = 0; i < parArray.length; i++) {
-            if (parArray[i].haveMountRelax === parHaveMountRelax) {
-                returnedArray.push(parArray[i]);
-            }
-        }
+    //     for (let i = 0; i < parArray.length; i++) {
+    //         if (parArray[i].haveBeach === parHaveBeach) {
+    //             returnedArray.push(parArray[i]);
+    //         }
+    //     }
 
-        return returnedArray;
-    }
+    //     return returnedArray;
+    // }
+
+
+    // const findDetermMountRelax = (parArray: any, parHaveMountRelax: any) => {
+    //     let returnedArray: any = [];
+
+    //     for (let i = 0; i < parArray.length; i++) {
+    //         if (parArray[i].haveMountRelax === parHaveMountRelax) {
+    //             returnedArray.push(parArray[i]);
+    //         }
+    //     }
+
+    //     return returnedArray;
+    // }
 
     const handlerSubmitFindTour = (event: any) => {
         const selectConutryElement: any = document.querySelector('#country-select');
